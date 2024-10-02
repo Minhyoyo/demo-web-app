@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: demo-app-web
-        image: nguyentrachminh/demo-web-app:${{ github.sha }}
+        image: nguyentrachminh/demo-web-app:latest
         ports:
         - containerPort: 80
 ---
