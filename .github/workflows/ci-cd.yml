@@ -1,16 +1,16 @@
-name: CI/CD for Demo App
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - main  # Thay đổi khi có bất kỳ commit nào lên nhánh main
+      - main  # Trigger CI/CD khi có thay đổi trên nhánh 'main'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Set up Docker Buildx
@@ -27,4 +27,16 @@ jobs:
       with:
         context: .
         push: true
-        tags: nguyentrachminh/demo-app-web:latest,nguyentrachminh/demo-web-app:${{ github.sha }}
+        tags: |
+          nguyentrachminh/demo-web-app:latest
+          nguyentrachminh/demo-web-app:${{ github.sha }}
+
+    - name: Commit updated image to GitHub
+      run: |
+        git config --global user.email "nguyentrachminh@gmail.com"
+        git config --global user.name "nguyentrachminh"
+        git checkout main
+        sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-web-app/demo-app-deployment.yaml
+        git add demo-web-app/demo-app-deployment.yaml
+        git commit -m "Update deployment to image ${{ github.sha }}"
+        git push
