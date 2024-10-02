@@ -25,6 +25,9 @@ jobs:
     - name: Update Docker Image Tag  
       run: |  
         sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-app-deployment.yaml
+        git add demo-web-app.yaml
+        git commit -m "Update image tag with commit SHA"
+        git push
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
