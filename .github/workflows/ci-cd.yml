@@ -34,14 +34,6 @@ jobs:
 
       - name: Update ArgoCD deployment file  
         run: |  
-          sed -i 's#image: nguyentrachminh/demo-web-app:.*#image: nguyentrachminh/demo-web-app:latest#' demo-app-deployment.yaml  
-
-      - name: Commit and push updated ArgoCD deployment file  
-        run: |  
-          git config --local user.email "nguyentrachminh@gmail.com"  
-          git config --local user.name "Minhyoyo"  
-          git add demo-app-deployment.yaml  
-          git commit -m "Update deployment with new Docker image"  
-          git push origin main  
+          sed -i 's#image: nguyentrachminh/demo-web-app:.*#image: nguyentrachminh/demo-web-app:latest#' demo-app-deployment.yaml   
         env:  
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
