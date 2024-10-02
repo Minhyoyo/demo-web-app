@@ -15,7 +15,7 @@ jobs:
 
       - name: Update Docker Image Tag  
         run: |  
-          sed -i 's/image: nguyentrachminh/demo-web-app:.*/image: nguyentrachminh/demo-web-app:${{ github.sha }}/' demo-app-deployment.yaml  
+          sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-app-deployment.yaml  
         # Script để cập nhật tệp Kubernetes với tag hình ảnh mới 
       - name: Commit and Push changes  
         run: |  
