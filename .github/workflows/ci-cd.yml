@@ -19,8 +19,8 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}  # Được cấu hình trong GitHub Secrets
-        password: ${{ secrets.DOCKER_PASSWORD }}  # Được cấu hình trong GitHub Secrets
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
@@ -29,5 +29,5 @@ jobs:
         push: true
         tags: nguyentrachminh/demo-app-web:latest
 
-    - name: Notify ArgoCD of new deployment
-      run: kubectl rollout restart deployment/demo-app
+    - name: Notify ArgoCD
+      run: kubectl rollout restart deployment/demo-app-web
