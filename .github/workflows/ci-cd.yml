@@ -30,4 +30,4 @@ jobs:
         tags: nguyentrachminh/demo-app-web:latest
 
     - name: Notify ArgoCD of new deployment
-      run: kubectl rollout restart deployment/demo-app-web
+      run: kubectl rollout restart deployment/demo-app
