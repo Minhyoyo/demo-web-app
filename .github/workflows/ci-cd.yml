@@ -36,7 +36,7 @@ jobs:
         git config --global user.email "nguyentrachminh@gmail.com"
         git config --global user.name "nguyentrachminh"
         git checkout main
-        sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-web-app/demo-app-deployment.yaml
-        git add demo-web-app/demo-app-deployment.yaml
+        sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-app-deployment.yaml
+        git add demo-app-deployment.yaml
         git commit -m "Update deployment to image ${{ github.sha }}"
         git push
