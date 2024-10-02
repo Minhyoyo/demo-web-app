@@ -1,4 +1,4 @@
-name: CI/CD for Demo App Web
+name: CI/CD for Demo App
 
 on:
   push:
