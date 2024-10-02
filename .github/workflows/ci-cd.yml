@@ -29,7 +29,7 @@ jobs:
         sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-app-deployment.yaml
         git add demo-app-deployment.yaml
         git commit -m "Update image tag with commit SHA"
-        git push
+        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/Minhyoyo/demo-web-app.git HEAD:main
         
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
