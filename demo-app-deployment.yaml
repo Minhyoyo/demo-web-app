@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: demo-app-web
   labels:
-    app: demo-app
+    app: demo-app-web
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: demo-app
+      app: demo-app-web
   template:
     metadata:
       labels:
-        app: demo-app
+        app: demo-app-web
     spec:
       containers:
-      - name: demo-app
-        image: nguyentrachminh/demo-app-web:latest
+      - name: demo-app-web
+        image: nguyentrachminh/demo-web-app:latest  # Image từ Docker Hub
         ports:
         - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-app-service
+  name: demo-app-web
 spec:
   selector:
-    app: demo-app
+    app: demo-app-web
   ports:
     - protocol: TCP
       port: 80
