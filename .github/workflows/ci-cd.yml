@@ -24,6 +24,8 @@ jobs:
 
     - name: Update Docker Image Tag  
       run: |  
+        git config --global user.email "nguyentrachminh@gmail.com"
+        git config --global user.name "Minhyoyo"
         sed -i 's@image: nguyentrachminh/demo-web-app:.*@image: nguyentrachminh/demo-web-app:${{ github.sha }}@g' demo-app-deployment.yaml
         git add demo-app-deployment.yaml
         git commit -m "Update image tag with commit SHA"
