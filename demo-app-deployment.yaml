@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: demo-app-web
-        image: nguyentrachminh/demo-web-app:latest  # Image từ Docker Hub
+        image: nguyentrachminh/demo-app-web:latest  # Image từ Docker Hub
         ports:
         - containerPort: 80
 ---
